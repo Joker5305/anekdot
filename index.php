@@ -5,9 +5,11 @@ $query = "set names utf8";
 $mysqli->query($query);
 $id;
 $query = "SELECT * FROM anekdots where shows = (SELECT min(shows) from anekdots) limit 1";
+$query = "SELECT shows FROM anekdots";
 if ($result = $mysqli->query($query)) {
 	while ($row = $result->fetch_assoc()) {
 		echo $row["anekdot"].'<br>';
+		echo $row["shows"]. '<br>';
 		$id =$row["id"];
 	}
 $result->free();
